@@ -73,7 +73,7 @@ scaler = joblib.load("scalerGAT.pkl")
 selector = joblib.load("varianceGAT.pkl")
 
 model = SolvGATNet(desc_dim=len(feature_cols))
-model.load_state_dict(torch.load("best_modelGAT.pth", map_location=device))
+model.load_state_dict(torch.load("best_modelGAt.pth", map_location=device))
 model.eval()
 
 
