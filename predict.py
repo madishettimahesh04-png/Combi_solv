@@ -68,12 +68,12 @@ class SolvGATNet(torch.nn.Module):
 # ---------------------------------------------------------------
 device = torch.device("cpu")
 
-feature_cols = joblib.load("features.pkl")
-scaler = joblib.load("scaler.pkl")
-selector = joblib.load("variance.pkl")
+feature_cols = joblib.load("featuresGAT.pkl")
+scaler = joblib.load("scalerGAT.pkl")
+selector = joblib.load("varianceGAT.pkl")
 
 model = SolvGATNet(desc_dim=len(feature_cols))
-model.load_state_dict(torch.load("best_model.pth", map_location=device))
+model.load_state_dict(torch.load("best_modelGAT.pth", map_location=device))
 model.eval()
 
 
