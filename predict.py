@@ -19,8 +19,8 @@ BASE_DIR = os.path.dirname(__file__)
 # ---------------------------------------------------------------
 # 🔥 LOAD FILES
 # ---------------------------------------------------------------
-feature_cols = joblib.load(os.path.join(BASE_DIR, "featuresGAT.pkl"))
-scaler = joblib.load(os.path.join(BASE_DIR, "scalerGAT.pkl"))
+feature_cols = joblib.load(os.path.join(BASE_DIR, "featuresG.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, "scalerG.pkl"))
 
 device = torch.device("cpu")
 
@@ -94,7 +94,7 @@ class SolvGATNet(torch.nn.Module):
 # ---------------------------------------------------------------
 model = SolvGATNet(desc_dim=len(feature_cols))
 model.load_state_dict(
-    torch.load(os.path.join(BASE_DIR, "best_modelGAt.pth"), map_location=device)
+    torch.load(os.path.join(BASE_DIR, "best_modelG.pth"), map_location=device)
 )
 model.eval()
 
