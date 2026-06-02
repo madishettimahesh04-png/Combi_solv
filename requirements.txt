@@ -1,13 +1,12 @@
 
 streamlit==1.35.0
 
-torch
-torch-geometric
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.0
+matplotlib==3.9.0
+joblib==1.4.2
 
-pandas
-numpy
-scikit-learn
-matplotlib
-joblib
+torch==2.3.1
 
 rdkit-pypi==2022.9.5
