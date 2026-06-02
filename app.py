@@ -1,9 +1,6 @@
 
 import streamlit as st
 
-from rdkit import Chem
-from rdkit.Chem.Draw import MolToImage
-
 from predict import predict_deltaG
 
 # ==========================================================
@@ -13,71 +10,39 @@ st.set_page_config(
 
     page_title="Hybrid GNN DeltaG Predictor",
 
-    layout="wide"
+    layout="centered"
 )
 
+# ==========================================================
+# TITLE
+# ==========================================================
 st.title(
     "Hybrid GNN ΔG Predictor"
+)
+
+st.markdown(
+    "Predict ΔG using Solute and Solvent SMILES"
 )
 
 # ==========================================================
 # INPUTS
 # ==========================================================
-col1, col2 = st.columns(2)
+solute_smiles = st.text_input(
 
-with col1:
+    "Solute SMILES",
 
-    solute_smiles = st.text_input(
+    value="CCO"
+)
 
-        "Solute SMILES",
+solvent_smiles = st.text_input(
 
-        value="CCO"
-    )
+    "Solvent SMILES",
 
-with col2:
-
-    solvent_smiles = st.text_input(
-
-        "Solvent SMILES",
-
-        value="O"
-    )
+    value="O"
+)
 
 # ==========================================================
-# MOLECULE DISPLAY
-# ==========================================================
-col3, col4 = st.columns(2)
-
-with col3:
-
-    st.subheader("Solute")
-
-    mol1 = Chem.MolFromSmiles(
-        solute_smiles
-    )
-
-    if mol1:
-
-        st.image(
-            MolToImage(mol1)
-        )
-
-with col4:
-
-    st.subheader("Solvent")
-
-    mol2 = Chem.MolFromSmiles(
-        solvent_smiles
-    )
-
-    if mol2:
-
-        st.image(
-            MolToImage(mol2)
-        )
-
-# ==========================================================
-# PREDICTION BUTTON
+# BUTTON
 # ==========================================================
 if st.button(
     "Predict ΔG"
@@ -100,4 +65,7 @@ if st.button(
 
     except Exception as e:
 
-        st.error(str(e))
+        st.error(
+
+            f"Prediction failed: {str(e)}"
+        )
